@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project specific
+.DS_Store
+
+# Raw survey data is not uploaded. See DataBase/README.md.
+DataBase/*.csv
+DataBase/*.xlsx

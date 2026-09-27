@@ -1,0 +1,7 @@
+step,N,economies,weighted_share_of_previous
+All respondents,144090,140,1.0
+Scam-module economies,76898,75,0.5336803375216771
+Owns a mobile phone (con1 = 1),64663,75,0.8142494553628409
+Paid in store by phone or card (fin25e2 = 1),16655,75,0.2481398761704281
+"Base sample: fin25e3 in {1,2,3} and con21 in {1,2}",16472,75,0.9902380970470244
+Common sample: all controls present,16251,75,0.9846056468174553
