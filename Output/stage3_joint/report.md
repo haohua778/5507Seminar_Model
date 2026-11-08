@@ -7,6 +7,7 @@
 - Estimation: weighted LPM (`wgt`), country fixed effects, standard errors clustered by economy
 - Reference group: less than monthly (`fin25e3` = 3)
 - Unit: percentage points; 95% CI in brackets
+- Mean of Y: weighted mean of the outcome on the estimation sample, overall and in the reference group. R-squared is that of the weighted fit and includes the explanatory power of the country fixed effects
 
 ## Main table
 
@@ -18,6 +19,9 @@
 | b_W: weekly - less than monthly | +1.17 [+0.24, +2.09], p = 0.014 | +1.16 [+0.23, +2.10], p = 0.016 | +1.17 [+0.23, +2.11], p = 0.015 |
 | b_M: monthly - less than monthly | +1.14 [+0.14, +2.14], p = 0.026 | +1.14 [+0.15, +2.14], p = 0.025 | +1.14 [+0.13, +2.15], p = 0.028 |
 | b_W - b_M: weekly - monthly | +0.03 [-0.86, +0.91], p = 0.950 | +0.02 [-0.89, +0.93], p = 0.967 | +0.03 [-0.88, +0.94], p = 0.943 |
+| Mean of Y (%) | 2.62 | 2.62 | 2.62 |
+| Mean of Y, less than monthly (%) | 2.71 | 2.71 | 2.71 |
+| R-squared | 0.039 | 0.043 | 0.044 |
 
 All three specifications use the same sample. A predicted probability sets everyone's payment frequency to one level, keeps all other variables at their observed values, and takes the weighted mean.
 

@@ -3,6 +3,12 @@
 For each specification the summary table holds
 - three predicted probabilities: P_W, P_M, P_L
 - three differences with 95% CI: b_W, b_M, b_W - b_M
+and, as columns next to N and economies,
+- mean_Y: weighted mean of the outcome on the estimation sample (same for all
+  specifications of a stage)
+- mean_Y_less_than_monthly: the same mean among respondents in the reference
+  group (fin25e3 = 3)
+- r_squared: R-squared of the WLS fit; it includes the country fixed effects
 """
 
 import numpy as np
@@ -33,8 +39,11 @@ def estimate_stage(sample):
     summary_rows = []
     coefficient_rows = []
 
+    r_squared = {}
+
     for spec, x_cols in SPECS.items():
         fit = fit_lpm(sample, OUTCOME, x_cols)
+        r_squared[spec] = fit.rsquared
 
         for name, (weekly, monthly) in FREQUENCY_LEVELS.items():
             probability = predicted_probability(fit, sample, weekly, monthly)
@@ -51,7 +60,14 @@ def estimate_stage(sample):
     summary = pd.DataFrame(summary_rows)
     summary["N"] = len(sample)
     summary["economies"] = sample[COUNTRY].nunique()
+    summary["mean_Y"] = weighted_mean_outcome(sample)
+    summary["mean_Y_less_than_monthly"] = weighted_mean_outcome(sample[sample["fin25e3"] == 3])
+    summary["r_squared"] = summary["spec"].map(r_squared)
     return summary, pd.DataFrame(coefficient_rows)
+
+
+def weighted_mean_outcome(sample):
+    return float(np.average(sample[OUTCOME], weights=sample[WEIGHT]))
 
 
 def raw_rates(sample):

@@ -3,13 +3,17 @@
 Output/
     sample_flow.csv
     main_results.md           nine main regressions and the interpretation
+    main_results_table.md     the same nine regressions in paper format
+    main_results_table.csv
     <stage key>/
         report.md
         summary.csv
         coefficients.csv
 """
 
-from DataClean_Pipeline.build_sample import PROJECT_ROOT
+import pandas as pd
+
+from DataClean_Pipeline.build_sample import DEMOGRAPHICS, DIGITAL, PROJECT_ROOT
 from Model_Pipeline.lpm import COUNTRY
 from Model_Pipeline.stages import MAIN_SPEC, OUTCOME, SPEC_LABELS, SPECS
 
@@ -24,14 +28,34 @@ QUANTITY_LABELS = {
     "beta_W_minus_beta_M": "b_W - b_M: weekly - monthly",
 }
 
+# Rows appended below the quantities: (label, summary column, format)
+SAMPLE_ROWS = [
+    ("Mean of Y (%)", "mean_Y", "percent"),
+    ("Mean of Y, less than monthly (%)", "mean_Y_less_than_monthly", "percent"),
+    ("R-squared", "r_squared", "plain"),
+]
+
 METHOD_NOTES = [
     "Estimation: weighted LPM (`wgt`), country fixed effects, "
     "standard errors clustered by economy",
     "Reference group: less than monthly (`fin25e3` = 3)",
     "Unit: percentage points; 95% CI in brackets",
+    "Mean of Y: weighted mean of the outcome on the estimation sample, overall and "
+    "in the reference group. R-squared is that of the weighted fit and includes the "
+    "explanatory power of the country fixed effects",
 ]
 
 SIGNIFICANCE_LEVEL = 0.05
+
+# Significance stars for the paper table.
+STARS = [(0.01, "***"), (0.05, "**"), (0.10, "*")]
+
+TABLE_EQUATION = ("Y_ic = β_W·Weekly_ic + β_M·Monthly_ic + X_ic'γ + α_c + ε_ic")
+TABLE_STAGE_TITLES = {
+    "stage1_contact": "Stage 1: Reported scam contact",
+    "stage2_send": "Stage 2: Sent money given contact",
+    "stage3_joint": "Stage 3: Contact and sent money",
+}
 
 
 def markdown_table(header, rows):
@@ -60,6 +84,10 @@ def format_difference(row):
     return f"{estimate:+.2f} [{ci_low:+.2f}, {ci_high:+.2f}], {format_p(row['p_value'])}"
 
 
+def format_sample_value(value, kind):
+    return f"{100 * value:.2f}" if kind == "percent" else f"{value:.3f}"
+
+
 def results_rows(summary):
     """One table row per quantity, one column per specification."""
     lookup = summary.set_index(["quantity", "spec"])
@@ -72,6 +100,11 @@ def results_rows(summary):
                 cells.append(f"{100 * row['estimate']:.2f}")
             else:
                 cells.append(format_difference(row))
+        rows.append([label] + cells)
+
+    by_spec = summary.drop_duplicates("spec").set_index("spec")
+    for label, column, kind in SAMPLE_ROWS:
+        cells = [format_sample_value(by_spec.loc[spec, column], kind) for spec in SPECS]
         rows.append([label] + cells)
     return rows
 
@@ -149,6 +182,95 @@ def interpret(stage1, stage2):
     if stage1_significant:
         return "lower reported contact with no detectable difference in conditional sending"
     return "describe the results as they are; do not use the word tradeoff"
+
+
+def stars(p_value):
+    for level, symbol in STARS:
+        if p_value < level:
+            return symbol
+    return ""
+
+
+def yes_no(condition):
+    return "Yes" if condition else "No"
+
+
+def main_results_table(stages, summaries):
+    """The nine regressions in paper format: a wide table, one column per stage x specification.
+
+    Returns (column names, rows). Each row is [label, nine cells].
+    """
+    columns = []
+    cells = {}            # row label -> list of nine cells
+    for stage, summary in zip(stages, summaries):
+        lookup = summary.set_index(["quantity", "spec"])
+        by_spec = summary.drop_duplicates("spec").set_index("spec")
+        for spec in SPECS:
+            columns.append(f"{TABLE_STAGE_TITLES[stage.key]} {spec}")
+            beta_w = lookup.loc[("beta_W", spec)]
+            beta_m = lookup.loc[("beta_M", spec)]
+            info = by_spec.loc[spec]
+            x_cols = SPECS[spec]
+            column_cells = {
+                "Weekly": f"{100 * beta_w['estimate']:.2f}{stars(beta_w['p_value'])}",
+                "Weekly (SE)": f"({100 * beta_w['se']:.2f})",
+                "Monthly": f"{100 * beta_m['estimate']:.2f}{stars(beta_m['p_value'])}",
+                "Monthly (SE)": f"({100 * beta_m['se']:.2f})",
+                "Demographic controls": yes_no(all(c in x_cols for c in DEMOGRAPHICS)),
+                "Digital-participation controls": yes_no(all(c in x_cols for c in DIGITAL)),
+                "Country fixed effects": "Yes",
+                "Mean of Y (%)": f"{100 * info['mean_Y']:.2f}",
+                "Mean of Y, less than monthly (%)": f"{100 * info['mean_Y_less_than_monthly']:.2f}",
+                "Observations": f"{info['N']:,}",
+                "Economies (clusters)": f"{info['economies']}",
+                "R-squared": f"{info['r_squared']:.3f}",
+            }
+            for label, cell in column_cells.items():
+                cells.setdefault(label, []).append(cell)
+    rows = [[label] + row_cells for label, row_cells in cells.items()]
+    return columns, rows
+
+
+def write_main_results_table(stages, summaries):
+    columns, rows = main_results_table(stages, summaries)
+    n_economies = summaries[0]["economies"].iloc[0]
+
+    # Markdown: a header row with the stage titles spanning their three specifications
+    # is not possible in plain Markdown, so the stage title is repeated in each column name.
+    header = ["Dependent variable: Y_ic"] + columns
+    display_rows = []
+    for row in rows:
+        label = row[0]
+        if label.endswith("(SE)"):
+            label = ""
+        display_rows.append([label] + row[1:])
+
+    notes = (
+        f"Notes. Estimates of β_W and β_M in percentage points, with standard errors clustered by "
+        f"economy in parentheses ({n_economies} economies, t distribution with {n_economies - 1} "
+        f"degrees of freedom). * p < 0.10, ** p < 0.05, *** p < 0.01. All columns are linear "
+        f"probability models estimated by weighted least squares with the Findex sampling weight "
+        f"`wgt`; α_c is a full set of country (economy) fixed effects. The reference group is "
+        f"respondents who pay in store by phone or card less than monthly (`fin25e3` = 3). "
+        f"Demographic controls: {', '.join(DEMOGRAPHICS)}. Digital-participation controls: "
+        f"{', '.join(DIGITAL)}. Stage 1 uses the common sample; Stage 2 includes only "
+        f"respondents who reported scam contact and answered whether they sent money; Stage 3 "
+        f"uses the common sample without contacted respondents whose sending outcome is unknown. "
+        f"Mean of Y is the weighted mean of the outcome on the estimation sample, overall and in "
+        f"the reference group. R-squared is that of the weighted fit and includes the explanatory "
+        f"power of the country fixed effects."
+    )
+    report = "\n\n".join([
+        "# Main results",
+        f"Equation: {TABLE_EQUATION}",
+        markdown_table(header, display_rows),
+        notes,
+    ]) + "\n"
+    (OUTPUT_DIR / "main_results_table.md").write_text(report, encoding="utf-8")
+
+    csv_rows = [[TABLE_EQUATION] + [""] * len(columns), [""] + columns] + rows
+    pd.DataFrame(csv_rows).to_csv(OUTPUT_DIR / "main_results_table.csv", index=False, header=False)
+    return report
 
 
 def write_main_results(stages, summaries):

@@ -10,6 +10,7 @@ from DataClean_Pipeline.build_sample import build_common_sample, load_raw
 from Model_Pipeline.report import (
     OUTPUT_DIR,
     write_main_results,
+    write_main_results_table,
     write_sample_flow,
     write_stage_report,
 )
@@ -31,6 +32,7 @@ def main():
         summaries.append(summary)
 
     print(write_main_results(STAGES, summaries))
+    print(write_main_results_table(STAGES, summaries))
     print(f"Results written to {OUTPUT_DIR}")
 
 
