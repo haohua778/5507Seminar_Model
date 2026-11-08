@@ -26,6 +26,24 @@ python run_pipeline.py    # 样本漏斗、三个 Stage、九个主回归
 python run_checks.py      # 估计器交叉验证
 ```
 
+## 第 7 项补充：支付工具与数据
+
+运行 `python run_payment_tools.py`，结果写到 `Output/payment_tools/`。
+补充复用现有样本、三阶段与估计器，将 fin25e1 加入原三种设置，并用同一批受访者比较加入前后结果。
+**A/B/C 是本次经确认的补充定义，不是上游已有的方程定义。**
+另附 con23 原题核查、官方 age=100 编码证据和年龄处理的敏感性结果。
+
+查看 [运行与整合说明](Docs/task7/README.md)、[原题与年龄依据](Docs/task7/codebook_audit.md)、
+[补充结果](Output/payment_tools/report.md)及[测量局限正文](Output/payment_tools/measurement_limitations.md)。
+
+```bash
+python -m unittest discover -s tests -p 'test_payment_tools.py' -v
+python run_payment_checks.py  # 核对补充计算、原主结果及同样本比较
+```
+
+该补充入口不更新原主表。主程序仍保留 age=100，补充报告单独给出按官方年龄分类规则排除它的结果。
+原始数据须放在 `DataBase/Data_Source.csv`，或者使用 `--data` 指定其他位置。
+
 ## 目录结构
 
 ```text

@@ -1,0 +1,88 @@
+{
+  "sources": [
+    {
+      "id": "microdata_codebook",
+      "url": "https://microdata.worldbank.org/catalog/7860/download/351895",
+      "retrieved_on": "2026-10-24",
+      "sha256": "4bb9a71f5dd35c4887a3980b4fc27062f710c91589df38632cd318615fd41377",
+      "pdf_pages": [
+        2,
+        15,
+        27
+      ]
+    },
+    {
+      "id": "financial_questionnaire",
+      "url": "https://microdata.worldbank.org/catalog/7860/download/351896",
+      "retrieved_on": "2026-10-24",
+      "sha256": "0986a0c7eb5d580d0aaa3d8e4fdee06822814b11de6306959a7b89b137299116",
+      "pdf_pages": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "connectivity_questionnaire",
+      "url": "https://microdata.worldbank.org/catalog/7860/download/356084",
+      "retrieved_on": "2026-10-24",
+      "sha256": "dfef1ff6dc49463a065cc43f1588d6f792cddf8fb37e9bacb015998295af5fa5",
+      "pdf_pages": [
+        5
+      ]
+    },
+    {
+      "id": "microdata_naming_script",
+      "url": "https://microdata.worldbank.org/catalog/7860/download/351894",
+      "retrieved_on": "2026-10-24",
+      "sha256": "c598431322b21b56c7ddd4b53d465705c64292d53b232540fa0af39fd706312e"
+    },
+    {
+      "id": "official_replication_package",
+      "url": "https://reproducibility.worldbank.org/catalog/299/download/912/FR_WLD_2025_361.zip",
+      "retrieved_on": "2026-10-24",
+      "sha256": "087c9c6449b42c358bee6da5fd5b2c298767da4e8580debeec3b66f420165d4d"
+    },
+    {
+      "id": "official_metadata",
+      "url": "https://microdata.worldbank.org/metadata/export/7860/json",
+      "retrieved_on": "2026-10-24",
+      "sha256": "da128e0cdfb958f02741f21cf11ad821ebcf44a739ef21f05370cde6afd0c7af"
+    }
+  ],
+  "age_evidence": [
+    {
+      "source": "microdata_naming_script",
+      "line": 21,
+      "assignment": "age = agenumber"
+    },
+    {
+      "source": "official_replication_package",
+      "member": "FR_WLD_2025_361/Reproducibility package/Code/Cleaning/Identifiers.R",
+      "line": 278,
+      "assignment": "agenumber = wp1220"
+    },
+    {
+      "source": "official_replication_package",
+      "member": "FR_WLD_2025_361/Reproducibility package/Code/Cleaning/core_variables_gwp.R",
+      "lines": [
+        615,
+        627
+      ],
+      "rule": "wp1220 == 100 ~ NA_real_"
+    }
+  ],
+  "github_audit": {
+    "repository": "https://github.com/haohua778/5507Seminar_Model",
+    "checked_on": "2026-10-24",
+    "head": "163c57b71121739ddda5df9c34d9659e2128cf24",
+    "branches": [
+      "main"
+    ],
+    "commits": 2,
+    "issues": 0,
+    "pull_requests": 0,
+    "discussions_enabled": false,
+    "wiki_readable": false,
+    "ABC_definition_found": false
+  }
+}
