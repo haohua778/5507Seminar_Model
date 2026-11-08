@@ -1,0 +1,17 @@
+variable,quantity,bound_pp,value
+weekly,estimate,,0.017055981684152757
+weekly,se,,0.013723163742103391
+weekly,mdd,,0.03896073488477171
+weekly,tost_p_value,2.0,0.4153622684223045
+weekly,tost_p_value,3.0,0.17431782628275663
+weekly,tost_p_value,3.9,0.0570354551842205
+weekly,tost_p_value,4.0,0.04938195228299812
+weekly,tost_p_value,5.0,0.009440953662660673
+monthly,estimate,,0.023919137412433823
+monthly,se,,0.01457745109412189
+monthly,mdd,,0.041386098573706676
+monthly,tost_p_value,2.0,0.6056031001720075
+monthly,tost_p_value,3.0,0.3388912361829169
+monthly,tost_p_value,3.9,0.15212792657597876
+monthly,tost_p_value,4.0,0.1367720526039261
+monthly,tost_p_value,5.0,0.03884347835040974

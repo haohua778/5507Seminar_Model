@@ -1,0 +1,16 @@
+variable,N,weighted_mean,weighted_sd
+Age (years),16251,34.89174866674464,13.48887419251164
+Female,16251,0.44957176727964987,
+Tertiary education,16251,0.20793529775852326,
+Income quintile 5,16080,0.3326747963084662,
+In the labor force,16251,0.7469026336079462,
+Rural,16251,0.49253976263954924,
+Uses the internet,16251,0.9019557318773177,
+Owns a smartphone,16251,0.8742969556700287,
+Has an account,16251,0.9870032760833092,
+Reported scam contact (Stage 1),16251,0.2870893708824447,
+"Sent money, among contacted (Stage 2)",4768,0.09133230350669061,
+Contact and sent money (Stage 3),16249,0.026214664977190404,
+Share of the sample: weekly,16251,0.4637660342193167,
+Share of the sample: monthly,16251,0.288832618670039,
+Share of the sample: less_than_monthly,16251,0.24740134711064424,

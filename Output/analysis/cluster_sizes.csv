@@ -1,0 +1,76 @@
+economycode,economy,n_stage1,n_stage2,senders,n_stage3
+ARG,Argentina,563,198,7,563
+BEN,Benin,91,31,6,91
+BFA,Burkina Faso,146,22,5,146
+BGD,Bangladesh,15,5,1,15
+BLZ,Belize,92,16,0,92
+BOL,Bolivia,176,92,7,176
+BRA,Brazil,500,197,8,500
+BWA,Botswana,379,74,11,379
+CIV,Cote d'Ivoire,106,29,5,106
+CMR,Cameroon,230,94,10,230
+COD,"Congo, Dem. Rep.",88,43,6,88
+COG,"Congo, Rep.",98,41,5,98
+COL,Colombia,216,63,2,216
+COM,Comoros,50,14,9,50
+CRI,Costa Rica,438,101,2,438
+DOM,Dominican Republic,210,69,1,210
+ECU,Ecuador,175,48,6,175
+EGY,"Egypt, Arab Rep.",40,18,2,40
+ETH,Ethiopia,66,8,2,66
+GAB,Gabon,230,103,12,230
+GHA,Ghana,280,165,20,279
+GIN,Guinea,124,62,9,124
+GMB,"Gambia, The",33,9,1,33
+GTM,Guatemala,59,25,1,59
+HND,Honduras,87,21,0,87
+IDN,Indonesia,103,37,1,103
+IND,India,581,94,28,581
+IRQ,Iraq,118,32,2,118
+JOR,Jordan,106,29,2,106
+KEN,Kenya,572,344,25,572
+KGZ,Kyrgyz Republic,394,52,3,394
+KHM,Cambodia,113,14,2,113
+LAO,Lao PDR,212,35,4,212
+LBN,Lebanon,42,4,2,42
+LBR,Liberia,58,25,3,58
+LKA,Sri Lanka,120,5,0,120
+LSO,Lesotho,171,28,5,171
+MAR,Morocco,79,10,0,79
+MDG,Madagascar,25,13,0,25
+MEX,Mexico,201,51,2,201
+MLI,Mali,128,51,6,128
+MNG,Mongolia,939,95,7,939
+MOZ,Mozambique,261,194,7,261
+MRT,Mauritania,136,29,14,136
+MWI,Malawi,124,44,3,124
+MYS,Malaysia,427,154,3,427
+NAM,Namibia,432,77,7,432
+NER,Niger,20,8,4,20
+NGA,Nigeria,380,81,11,380
+NIC,Nicaragua,81,19,2,81
+NPL,Nepal,106,15,1,106
+PAK,Pakistan,48,28,6,48
+PAN,Panama,304,91,11,304
+PER,Peru,318,102,4,318
+PHL,Philippines,81,40,2,81
+PRY,Paraguay,229,106,6,229
+PSE,West Bank and Gaza,79,16,2,79
+SEN,Senegal,427,146,30,427
+SLE,Sierra Leone,47,24,2,47
+SLV,El Salvador,95,33,1,95
+SWZ,Eswatini,196,74,15,196
+TCD,Chad,65,26,11,65
+TGO,Togo,115,34,4,115
+THA,Thailand,392,170,4,392
+TJK,Tajikistan,194,11,2,194
+TUN,Tunisia,65,3,0,65
+TUR,Turkiye,518,133,15,518
+TZA,Tanzania,46,38,1,46
+UGA,Uganda,139,80,8,139
+UZB,Uzbekistan,373,18,3,372
+VEN,"Venezuela, RB",612,208,10,612
+VNM,Viet Nam,462,32,1,462
+ZAF,South Africa,396,56,7,396
+ZMB,Zambia,300,202,18,300
+ZWE,Zimbabwe,329,9,0,329

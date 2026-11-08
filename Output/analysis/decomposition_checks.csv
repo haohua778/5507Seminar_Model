@@ -1,0 +1,23 @@
+quantity,contrast,value
+"fitted values below 0, share",stage1_contact,0.011445449510799335
+"fitted values above 1, count",stage1_contact,0.0
+largest fitted value,stage1_contact,0.8255963621913727
+"fitted values below 0, share",stage2_send,0.05180369127516778
+"fitted values above 1, count",stage2_send,0.0
+largest fitted value,stage2_send,0.7780776576347345
+"fitted values below 0, share",stage3_joint,0.1122530617268755
+"fitted values above 1, count",stage3_joint,0.0
+largest fitted value,stage3_joint,0.34317106112336604
+"Stage 2 prediction at L below 0, share (full sample)",,0.12460771644821857
+"Qbar_L, full sample",,0.08077437932710615
+"Qbar_L, contacted sample",,0.07638190648281404
+"product difference, untruncated",weekly,0.009536567614848598
+"product difference, predictions truncated to [0,1]",weekly,0.009171337653532514
+interaction b1 b2,weekly,0.0009135946267247538
+"contact margin, interaction assigned to sending: b1 Qbar_L",weekly,0.004326636853675593
+"contact margin, interaction assigned to contact: b1 (Qbar_L + b2)",weekly,0.005240231480400347
+"product difference, untruncated",monthly,0.009777382192585574
+"product difference, predictions truncated to [0,1]",monthly,0.009325592323026835
+interaction b1 b2,monthly,0.0008572682609194451
+"contact margin, interaction assigned to sending: b1 Qbar_L",monthly,0.0028949752868847292
+"contact margin, interaction assigned to contact: b1 (Qbar_L + b2)",monthly,0.003752243547804174

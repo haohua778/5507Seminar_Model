@@ -22,7 +22,7 @@
 在项目根目录运行，结果写到 `Output/`。四个入口按顺序执行：
 
 ```bash
-python run_pipeline.py      # 样本漏斗、三个 Stage、九个主回归 -> Output/
+python run_pipeline.py      # 样本漏斗、三个 Stage、九个主回归 -> Output/；论文数字核对 -> Output/analysis/
 python run_checks.py        # 估计器交叉验证，只打印不写文件
 python run_analysis.py      # 按频率的描述统计、图 1、联合差异分解、图 2 -> Output/analysis/
 python run_robustness.py    # 六个频率系数的 wild cluster bootstrap -> Output/robustness/
@@ -39,7 +39,7 @@ python -m Analysis_Pipeline.joint_decomposition
 
 ```text
 5507Seminar_Model/
-├── run_pipeline.py              入口：样本与九个主回归
+├── run_pipeline.py              入口：样本与九个主回归，以及论文数字核对
 ├── run_checks.py                入口：交叉验证估计器
 ├── run_analysis.py              入口：描述统计、两张图、联合差异分解
 ├── run_robustness.py            入口：稳健性检验
@@ -58,7 +58,13 @@ python -m Analysis_Pipeline.joint_decomposition
 │   ├── descriptives_by_frequency.py    按支付频率分组的描述统计、国家内差异
 │   ├── figure1_between_within.py       图 1：国家间 vs 国家内
 │   ├── joint_decomposition.py          联合差异分解（全量样本），delta method 与 WCB 区间
-│   └── figure2_predicted_probabilities.py  图 2：三个 Stage 的预测概率
+│   ├── figure2_predicted_probabilities.py  图 2：三个 Stage 的预测概率
+│   ├── paper_targets.py                论文数字核对的公共函数：计算值与论文值的对照表
+│   ├── descriptives_full_sample.py     Table 2 全样本列：加权均值、年龄标准差、三组份额
+│   ├── economy_composition.py          3.4 节：经济体层面的接触率、联合事件率与频率构成
+│   ├── cluster_sizes.py                3.6 节：各经济体样本量、汇款者集中度、无汇款者的经济体
+│   ├── decomposition_checks.py         3.5、4.2 节：拟合值越界比例、截断后的乘积差、交互项归属
+│   └── stage2_power.py                 4.2 节：Stage 2 的最小可检测差异与 TOST 等价性检验
 ├── Robustness_Pipeline/         第四步：稳健性
 │   └── wild_cluster_bootstrap.py       六个频率系数的 WCR wild cluster bootstrap
 ├── Output/                      结果，可用上面四个入口重新生成
@@ -68,7 +74,7 @@ python -m Analysis_Pipeline.joint_decomposition
 │   ├── stage1_contact/          report.md、summary.csv、coefficients.csv
 │   ├── stage2_send/
 │   ├── stage3_joint/
-│   ├── analysis/                run_analysis.py 的输出，见其中的 README.md
+│   ├── analysis/                run_analysis.py 的输出和 run_pipeline.py 的论文数字核对，见其中的 README.md
 │   ├── robustness/              run_robustness.py 的输出
 │   └── archive/                 按日期归档的快照（PDF、截图、9/30 组会、10/9 期中），见其中的 README.md
 ├── Memo/                        交给教授的 Progress Memo，含个人信息，不上传
@@ -77,6 +83,8 @@ python -m Analysis_Pipeline.joint_decomposition
 ```
 
 数据流向：`DataBase` → `DataClean_Pipeline` → `Model_Pipeline` → `Output`；`Analysis_Pipeline` 和 `Robustness_Pipeline` 复用前两步的样本和估计器，结果写到 `Output/analysis/` 和 `Output/robustness/`。
+
+论文正文里引用的、主表之外的数字（Table 2 全样本列、3.4 节经济体构成、3.6 节簇大小、3.5 和 4.2 节的分解检查与功效）由 `run_pipeline.py` 末尾的五个核对模块复现。每个模块把论文里的数字写成目标值，用数据重新计算后打印对照表，并汇总到 `Output/analysis/paper_number_checks.md`；对不上的行标为 NO，不调整定义去凑。
 
 ## 以后安装其他包
 

@@ -1,6 +1,9 @@
-"""Descriptive statistics by payment frequency (Table: who pays weekly within an economy).
+"""Descriptive statistics by payment frequency (Table 2: who pays weekly within an economy).
 
 Common sample, weights `wgt`. For each characteristic the table gives
+- the weighted mean in the full sample (for age also the weighted standard
+  deviation), computed with the helpers that descriptives_full_sample.py
+  also uses
 - the weighted mean in the weekly, monthly and less-than-monthly groups
 - the within-economy difference (weekly - less than monthly and monthly - less
   than monthly) from the same weighted regression as the main results but
@@ -8,6 +11,7 @@ Common sample, weights `wgt`. For each characteristic the table gives
   standard errors clustered by economy
 
 The Stage 2 rate is computed in the contacted sample (Stage 2 sample).
+A row at the top gives the weighted share of each frequency group.
 
 Outputs: Output/analysis/descriptives_by_frequency.{csv,md}
 
@@ -51,11 +55,26 @@ def variable_list(common):
     ]
 
 
+def weighted_mean(sample, column):
+    return float(np.average(sample[column], weights=sample[WEIGHT]))
+
+
+def weighted_sd(sample, column):
+    mean = weighted_mean(sample, column)
+    return float(np.sqrt(np.average((sample[column] - mean) ** 2, weights=sample[WEIGHT])))
+
+
+def group_share(common, code):
+    """Weighted share of the sample in one payment-frequency group (fin25e3 code)."""
+    in_group = common.assign(in_group=(common["fin25e3"] == code).astype(float))
+    return weighted_mean(in_group, "in_group")
+
+
 def weighted_group_means(sample, column):
     means = {}
     for code, name in GROUP_COLUMNS.items():
         group = sample[sample["fin25e3"] == code]
-        means[name] = np.average(group[column], weights=group[WEIGHT])
+        means[name] = weighted_mean(group, column)
     return means
 
 
@@ -74,18 +93,27 @@ def within_economy_differences(sample, column):
 
 def group_counts(sample, label):
     counts = sample["fin25e3"].value_counts()
-    return {"variable": label,
+    return {"variable": label, "full_sample": float(len(sample)),
             **{name: float(counts[code]) for code, name in GROUP_COLUMNS.items()}}
 
 
+def group_shares(common):
+    return {"variable": "Share of the sample (weighted)", "full_sample": 1.0,
+            **{name: group_share(common, code) for code, name in GROUP_COLUMNS.items()}}
+
+
 def build_table(common):
-    rows = [group_counts(common, "N (unweighted)")]
+    rows = [group_counts(common, "N (unweighted)"), group_shares(common)]
     for label, column, sample in variable_list(common):
-        rows.append({
+        row = {
             "variable": label,
+            "full_sample": weighted_mean(sample, column),
             **weighted_group_means(sample, column),
             **within_economy_differences(sample, column),
-        })
+        }
+        if column == "age":
+            row["full_sample_sd"] = weighted_sd(sample, column)
+        rows.append(row)
     rows.append(group_counts(stage2_send(common), "N (unweighted), contacted sample"))
     return pd.DataFrame(rows)
 
@@ -98,6 +126,13 @@ def format_cell(row, column):
     return f"{scale * row[column]:.2f}"
 
 
+def format_full_sample(row):
+    cell = format_cell(row, "full_sample")
+    if row["variable"].startswith("Age"):
+        cell += f" (SD {row['full_sample_sd']:.2f})"
+    return cell
+
+
 def format_difference(row, column):
     if pd.isna(row[column]):
         return ""
@@ -106,11 +141,11 @@ def format_difference(row, column):
 
 
 def markdown_table(table):
-    header = ["", "Weekly", "Monthly", "Less than monthly",
+    header = ["", "Full sample", "Weekly", "Monthly", "Less than monthly",
               "Within-economy W - L", "Within-economy M - L"]
     lines = ["| " + " | ".join(header) + " |", "|" + "---|" * len(header)]
     for _, row in table.iterrows():
-        cells = [format_cell(row, c) for c in GROUP_COLUMNS.values()]
+        cells = [format_full_sample(row)] + [format_cell(row, c) for c in GROUP_COLUMNS.values()]
         cells += [format_difference(row, "within_W_minus_L"),
                   format_difference(row, "within_M_minus_L")]
         lines.append("| " + " | ".join([row["variable"]] + cells) + " |")
@@ -129,8 +164,9 @@ def write_markdown(table, common):
         f"N = {len(common):,} respondents in {n_economies} economies; all respondents own a "
         "mobile phone, paid in store by phone or card, and have complete controls. "
         "Payment frequency is `fin25e3` (1 = weekly, 2 = monthly, 3 = less than monthly). "
-        "Group columns are means weighted by the Findex sampling weight `wgt`; "
-        "shares are in percent, age in years. "
+        "The full-sample and group columns are means weighted by the Findex sampling weight "
+        "`wgt`; shares are in percent, age in years, with the weighted standard deviation of "
+        "age in parentheses. The share row gives the weighted share of each frequency group. "
         "Within-economy columns report the coefficients on the weekly and monthly dummies "
         "from a weighted least squares regression of the characteristic on the two dummies "
         "and economy fixed effects, with standard errors clustered by economy "
