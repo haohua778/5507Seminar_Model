@@ -1,4 +1,4 @@
-"""Step 1 of the robustness checks: wild cluster bootstrap for specification (2).
+"""Wild cluster bootstrap for the six frequency coefficients of specification (2).
 
 The main results cluster standard errors by economy and read p-values from
 the t distribution with 74 degrees of freedom (75 economies). This script
@@ -17,14 +17,13 @@ The script also runs four checks and prints them:
 2. A second seed (12345) next to the main seed (20261026).
 3. The wildboottest package on the same sqrt(wgt)-transformed OLS model.
 
-Outputs: Output/bootstrap/wild_cluster_bootstrap_2026-10-26.{csv,md}
-         Output/bootstrap/wild_cluster_bootstrap_stage3_weekly_2026-10-26.png
+Outputs: Output/robustness/wild_cluster_bootstrap_2026-10-26.{csv,md}
+         Output/robustness/wild_cluster_bootstrap_stage3_weekly_2026-10-26.png
 
-Run from the project root:
-    .venv/bin/python Robustness/bootstrap/step1_wild_cluster_bootstrap.py
+Run from the project root, as part of run_robustness.py or alone:
+    python -m Robustness_Pipeline.wild_cluster_bootstrap
 """
 
-import sys
 from pathlib import Path
 
 import matplotlib
@@ -35,8 +34,7 @@ import statsmodels.api as sm
 from scipy import stats
 from wildboottest.wildboottest import wildboottest
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(PROJECT_ROOT))
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 from DataClean_Pipeline.build_sample import build_common_sample, load_raw
 from Model_Pipeline.lpm import COUNTRY, WEIGHT, fit_lpm
@@ -44,7 +42,7 @@ from Model_Pipeline.stages import MAIN_SPEC, OUTCOME, SPECS, stage1_contact, sta
 
 matplotlib.use("Agg")
 
-OUTPUT_DIR = PROJECT_ROOT / "Output" / "bootstrap"
+OUTPUT_DIR = PROJECT_ROOT / "Output" / "robustness"
 DATE = "2026-10-26"
 
 # (folder name under Output/, label for the report, function that builds the sample)
@@ -66,7 +64,7 @@ FIGURE_STAGE = "stage3_joint"
 FIGURE_VARIABLE = "weekly"
 FIGURE_NAME = f"wild_cluster_bootstrap_stage3_weekly_{DATE}.png"
 
-# Same colors as the Oct9 figures (validated with the dataviz palette checker).
+# Same colors as the Analysis_Pipeline figures (validated with the dataviz palette checker).
 BLUE = "#2a78d6"
 ORANGE = "#eb6834"
 GRAY = "#52514e"

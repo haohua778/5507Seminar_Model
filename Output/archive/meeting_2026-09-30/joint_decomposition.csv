@@ -1,0 +1,3 @@
+contrast,contact_rate,sending_rate_if_contacted,product_difference,from_higher_contact,from_higher_sending,share_from_contact,direct_stage3_estimate
+weekly - less than monthly,25.19 -> 30.55,7.64 -> 9.34,0.930128713302749,0.4548153685216848,0.47531334478106424,0.48898110768637915,1.16125927234265
+monthly - less than monthly,25.19 -> 28.77,7.64 -> 10.03,0.9619954794956892,0.31661820197157753,0.6453772775241117,0.32912649666249943,1.1420041666396101

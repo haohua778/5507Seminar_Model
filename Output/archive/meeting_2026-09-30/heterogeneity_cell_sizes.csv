@@ -1,0 +1,25 @@
+dimension,group,frequency,N,contacted,senders,below_30_senders
+income (excl. Lesotho),low: Q1-2,weekly,1397,402,47,False
+income (excl. Lesotho),low: Q1-2,monthly,1016,275,30,False
+income (excl. Lesotho),low: Q1-2,less than monthly,964,281,29,True
+income (excl. Lesotho),low: Q1-2,AT LEAST MONTHLY (collapsed),2413,677,77,False
+income (excl. Lesotho),high: Q3-5,weekly,5929,1727,136,False
+income (excl. Lesotho),high: Q3-5,monthly,3669,1110,113,False
+income (excl. Lesotho),high: Q3-5,less than monthly,3105,947,85,False
+income (excl. Lesotho),high: Q3-5,AT LEAST MONTHLY (collapsed),9598,2837,249,False
+education,primary or less,weekly,862,244,31,False
+education,primary or less,monthly,743,219,27,True
+education,primary or less,less than monthly,726,212,35,False
+education,primary or less,AT LEAST MONTHLY (collapsed),1605,463,58,False
+education,secondary or more,weekly,6496,1894,153,False
+education,secondary or more,monthly,4018,1177,118,False
+education,secondary or more,less than monthly,3406,1024,81,False
+education,secondary or more,AT LEAST MONTHLY (collapsed),10514,3071,271,False
+residence,rural,weekly,3399,953,95,False
+residence,rural,monthly,2568,716,82,False
+residence,rural,less than monthly,2196,632,62,False
+residence,rural,AT LEAST MONTHLY (collapsed),5967,1669,177,False
+residence,urban,weekly,3959,1185,89,False
+residence,urban,monthly,2193,680,63,False
+residence,urban,less than monthly,1936,604,54,False
+residence,urban,AT LEAST MONTHLY (collapsed),6152,1865,152,False

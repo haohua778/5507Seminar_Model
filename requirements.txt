@@ -7,7 +7,7 @@ scikit-learn==1.9.1
 scipy==1.18.1
 # Required by pandas.read_excel() for .xlsx files.
 openpyxl==3.1.5
-# Figures in Oct9/ scripts.
+# Figures in Analysis_Pipeline/ and Robustness_Pipeline/.
 matplotlib==3.11.2
-# Cross-check of the wild cluster bootstrap in Robustness/bootstrap/.
+# Cross-check of the wild cluster bootstrap in Robustness_Pipeline/.
 wildboottest==0.3.2

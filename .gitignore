@@ -223,3 +223,6 @@ __marimo__/
 # Raw survey data is not uploaded. See DataBase/README.md.
 DataBase/*.csv
 DataBase/*.xlsx
+
+# Memos carry names, emails and student IDs, so they stay out of the repository.
+Memo/
