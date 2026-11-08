@@ -1,0 +1,7 @@
+age_policy,stage,original_N,matched_N,excluded_fin25e1_N,original_events,matched_events,original_economies,matched_economies
+legacy,stage1_contact,16251,16235,16,4770,4765,75,75
+legacy,stage2_send,4768,4763,5,445,444,75,75
+legacy,stage3_joint,16249,16233,16,445,444,75,75
+exclude_100,stage1_contact,16245,16229,16,4766,4761,75,75
+exclude_100,stage2_send,4764,4759,5,444,443,75,75
+exclude_100,stage3_joint,16243,16227,16,444,443,75,75

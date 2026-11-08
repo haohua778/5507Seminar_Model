@@ -1,0 +1,92 @@
+{
+  "created_utc": "2026-10-25T01:37:10.257922+00:00",
+  "data_filename": "Data_Source.csv",
+  "data_sha256": "59f22173a99edf1206504e50cb9329147eae5e944bd6b75c16df5c1b2034472a",
+  "raw_N": 144090,
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "statsmodels": "0.15.0",
+    "scipy": "1.18.1"
+  },
+  "definitions": "User-approved supplement: A/B/C = original (1)/(2)/(3) plus usual_digital_payment; not an upstream definition.",
+  "fin25e1_mapping": {
+    "1": 1,
+    "2": 0,
+    "3/4/missing": "excluded from matched comparisons"
+  },
+  "specifications": {
+    "(1)": [
+      "weekly",
+      "monthly",
+      "usual_digital_payment"
+    ],
+    "(2)": [
+      "weekly",
+      "monthly",
+      "age",
+      "age_sq",
+      "female_d",
+      "educ_2",
+      "educ_3",
+      "inc_q2",
+      "inc_q3",
+      "inc_q4",
+      "inc_q5",
+      "labor_force",
+      "rural",
+      "usual_digital_payment"
+    ],
+    "(3)": [
+      "weekly",
+      "monthly",
+      "age",
+      "age_sq",
+      "female_d",
+      "educ_2",
+      "educ_3",
+      "inc_q2",
+      "inc_q3",
+      "inc_q4",
+      "inc_q5",
+      "labor_force",
+      "rural",
+      "internet_use",
+      "smartphone",
+      "account",
+      "usual_digital_payment"
+    ]
+  },
+  "age_policies": {
+    "legacy": "main pipeline unchanged",
+    "exclude_100": "100 treated as missing; main specification only"
+  },
+  "code_sha256": {
+    "run_payment_tools.py": "23ac7f36168862b82106b2830502c10d681b3ae600a6f961447493d03675fa95",
+    "run_payment_checks.py": "dddfed5d85e6a2cab4a8172c004ed52599d3e6af2c97726ef88da1aa58a49987",
+    "run_checks.py": "a9509ab8620fa1d7539410010ded1ccb1bd7ee7040178b909702f13b4ce328bc",
+    "tests/test_payment_tools.py": "abaf5bd96dc10f56372a3f8274392a5950aa836dcffd071846835be03abef755",
+    "DataClean_Pipeline/build_sample.py": "01ad8541f07e91bf3f13d92bb77f5c11fb1356ec71b5f108950363efa3350c8b",
+    "DataClean_Pipeline/payment_tools.py": "3949d6f54056c4f0cf43126a0fed41e0e2735d796e6f3158c31aca747e951292",
+    "Model_Pipeline/stages.py": "c1f1884b0a531d3cfe72deb54b76285e3ada1afacdfc8a88856eee2f8f87bc6b",
+    "Model_Pipeline/lpm.py": "f0dd2025a7af2426c31cf94eda20a2c58b0b72c2057be85b53a267cbabe3a67a",
+    "Model_Pipeline/results.py": "a2ef91a999562b20aa5593b3bb92b1fa33a236bd426ba01a0d0a1d998b48f4f0",
+    "Model_Pipeline/report.py": "dd7c35bf743328b901502452b2017ed0296d47a12885e7a10f3855d9b9c5be9e",
+    "Model_Pipeline/payment_tools.py": "d3d8cf1b8fd4c4312387fed923beab395aa257d5ebfe79b61f7e4ce27e7609c5",
+    "Model_Pipeline/payment_tools_report.py": "23c817ee4fa5174b85cfc81352b0c2a084a7260a5040aca687bfc4624a2feee6"
+  },
+  "source_manifest_sha256": "ea29d56006763d058b758ac88590636c326828ba1725dea41ff579ca94e25ab8",
+  "output_sha256": {
+    "summary.csv": "13c422e5ac006fbd031734626d50a8f9c84320958ff8c3aed78318add54471b0",
+    "coefficients.csv": "90d732c7bdee6e259f145bda2c77bce73256c6c0db521156e844cfd21fb98687",
+    "sample_flow.csv": "054b84d7fa961c66cfbe67cb697abef9296332f76db85b942c952d42a22ca64a",
+    "sample_counts.csv": "59acac4b2a43a28f9a22eecb0b546ed8d9d32b1475c77483820ae3bb9ff8677c",
+    "answer_audit.csv": "e4e98e5e4f93e35f441572073d700a3e1e0ad74ac70e21fa11ed9b4d43ef6f02",
+    "age_audit.csv": "60967b40b8c47c601debb8355404d04fcaaec64908e430a39ea7b62c4c08a291",
+    "age_by_economy.csv": "ce5fb184f5f2dff145d92ab15294e542d204fa42e406da8e6440f53c586e1e1d",
+    "comparison.csv": "0f0ef578f56ac32f79914b6795e13dd9b3dd87b2a7f1123204f0092a31ff58c6",
+    "report.md": "ae2d3155a0bf8f8838f476b8dd430daae937363cef6551a2c6f1e0c0bc632757",
+    "measurement_limitations.md": "60d1f1c1848a3b5d094efc82800357f34deb6f5c6dcb2d81408404814991f68d"
+  }
+}

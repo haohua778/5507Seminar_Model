@@ -28,12 +28,16 @@ DIFFERENCES = {
 FREQUENCY_CODES = {1: "weekly", 2: "monthly", 3: "less than monthly"}
 
 
-def estimate_stage(sample):
-    """Returns (summary table, table of all coefficients)."""
+def estimate_stage(sample, *, specifications=None):
+    """Return summary and coefficient tables; default to the nine-model pipeline.
+
+    Supplements may pass their own predictor lists without changing SPECS.
+    """
+    specifications = SPECS if specifications is None else specifications
     summary_rows = []
     coefficient_rows = []
 
-    for spec, x_cols in SPECS.items():
+    for spec, x_cols in specifications.items():
         fit = fit_lpm(sample, OUTCOME, x_cols)
 
         for name, (weekly, monthly) in FREQUENCY_LEVELS.items():

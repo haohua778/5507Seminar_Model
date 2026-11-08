@@ -1,0 +1,15 @@
+step,N,economies,weighted_share_of_previous,age_policy
+All respondents,144090,140,1.0,legacy
+Scam-module economies,76898,75,0.5336803375216771,legacy
+Owns a mobile phone (con1 = 1),64663,75,0.8142494553628409,legacy
+Paid in store by phone or card (fin25e2 = 1),16655,75,0.2481398761704281,legacy
+"Base sample: fin25e3 in {1,2,3} and con21 in {1,2}",16472,75,0.9902380970470244,legacy
+Common sample: all controls present,16251,75,0.9846056468174553,legacy
+"Task 7: fin25e1 in {1,2}",16235,75,0.9989149065784655,legacy
+All respondents,144090,140,1.0,exclude_100
+Scam-module economies,76898,75,0.5336803375216771,exclude_100
+Owns a mobile phone (con1 = 1),64663,75,0.8142494553628409,exclude_100
+Paid in store by phone or card (fin25e2 = 1),16655,75,0.2481398761704281,exclude_100
+"Base sample: fin25e3 in {1,2,3} and con21 in {1,2}",16472,75,0.9902380970470244,exclude_100
+Common sample: all controls present,16245,75,0.984268113085049,exclude_100
+"Task 7: fin25e1 in {1,2}",16229,75,0.9989145344688466,exclude_100

@@ -1,0 +1,299 @@
+check,passed,detail
+input_hash,True,
+code_hash:run_payment_tools.py,True,
+code_hash:run_payment_checks.py,True,
+code_hash:run_checks.py,True,
+code_hash:tests/test_payment_tools.py,True,
+code_hash:DataClean_Pipeline/build_sample.py,True,
+code_hash:DataClean_Pipeline/payment_tools.py,True,
+code_hash:Model_Pipeline/stages.py,True,
+code_hash:Model_Pipeline/lpm.py,True,
+code_hash:Model_Pipeline/results.py,True,
+code_hash:Model_Pipeline/report.py,True,
+code_hash:Model_Pipeline/payment_tools.py,True,
+code_hash:Model_Pipeline/payment_tools_report.py,True,
+output_hash:summary.csv,True,
+output_hash:coefficients.csv,True,
+output_hash:sample_flow.csv,True,
+output_hash:sample_counts.csv,True,
+output_hash:answer_audit.csv,True,
+output_hash:age_audit.csv,True,
+output_hash:age_by_economy.csv,True,
+output_hash:comparison.csv,True,
+output_hash:report.md,True,
+output_hash:measurement_limitations.md,True,
+sources_hash,True,
+all_36_models,True,models=36
+all_coefficient_models,True,
+unique_summary_rows,True,
+unique_coefficient_rows,True,
+six_outputs:legacy/stage1_contact/original/(1),True,
+prediction_identity:legacy/stage1_contact/original/(1),True,gap=1.04e-16
+finite_inference:legacy/stage1_contact/original/(1),True,
+six_outputs:legacy/stage1_contact/original/(2),True,
+prediction_identity:legacy/stage1_contact/original/(2),True,gap=4.86e-17
+finite_inference:legacy/stage1_contact/original/(2),True,
+six_outputs:legacy/stage1_contact/original/(3),True,
+prediction_identity:legacy/stage1_contact/original/(3),True,gap=1.18e-16
+finite_inference:legacy/stage1_contact/original/(3),True,
+six_outputs:legacy/stage1_contact/same_sample/(1),True,
+prediction_identity:legacy/stage1_contact/same_sample/(1),True,gap=6.94e-17
+finite_inference:legacy/stage1_contact/same_sample/(1),True,
+six_outputs:legacy/stage1_contact/same_sample/(2),True,
+prediction_identity:legacy/stage1_contact/same_sample/(2),True,gap=9.02e-17
+finite_inference:legacy/stage1_contact/same_sample/(2),True,
+six_outputs:legacy/stage1_contact/same_sample/(3),True,
+prediction_identity:legacy/stage1_contact/same_sample/(3),True,gap=1.18e-16
+finite_inference:legacy/stage1_contact/same_sample/(3),True,
+six_outputs:legacy/stage1_contact/fin25e1_added/(1),True,
+prediction_identity:legacy/stage1_contact/fin25e1_added/(1),True,gap=1.39e-17
+finite_inference:legacy/stage1_contact/fin25e1_added/(1),True,
+six_outputs:legacy/stage1_contact/fin25e1_added/(2),True,
+prediction_identity:legacy/stage1_contact/fin25e1_added/(2),True,gap=2.78e-17
+finite_inference:legacy/stage1_contact/fin25e1_added/(2),True,
+six_outputs:legacy/stage1_contact/fin25e1_added/(3),True,
+prediction_identity:legacy/stage1_contact/fin25e1_added/(3),True,gap=1.04e-16
+finite_inference:legacy/stage1_contact/fin25e1_added/(3),True,
+six_outputs:legacy/stage2_send/original/(1),True,
+prediction_identity:legacy/stage2_send/original/(1),True,gap=6.94e-18
+finite_inference:legacy/stage2_send/original/(1),True,
+six_outputs:legacy/stage2_send/original/(2),True,
+prediction_identity:legacy/stage2_send/original/(2),True,gap=1.01e-16
+finite_inference:legacy/stage2_send/original/(2),True,
+six_outputs:legacy/stage2_send/original/(3),True,
+prediction_identity:legacy/stage2_send/original/(3),True,gap=1.01e-16
+finite_inference:legacy/stage2_send/original/(3),True,
+six_outputs:legacy/stage2_send/same_sample/(1),True,
+prediction_identity:legacy/stage2_send/same_sample/(1),True,gap=3.47e-18
+finite_inference:legacy/stage2_send/same_sample/(1),True,
+six_outputs:legacy/stage2_send/same_sample/(2),True,
+prediction_identity:legacy/stage2_send/same_sample/(2),True,gap=1.04e-16
+finite_inference:legacy/stage2_send/same_sample/(2),True,
+six_outputs:legacy/stage2_send/same_sample/(3),True,
+prediction_identity:legacy/stage2_send/same_sample/(3),True,gap=1.04e-16
+finite_inference:legacy/stage2_send/same_sample/(3),True,
+six_outputs:legacy/stage2_send/fin25e1_added/(1),True,
+prediction_identity:legacy/stage2_send/fin25e1_added/(1),True,gap=3.47e-18
+finite_inference:legacy/stage2_send/fin25e1_added/(1),True,
+six_outputs:legacy/stage2_send/fin25e1_added/(2),True,
+prediction_identity:legacy/stage2_send/fin25e1_added/(2),True,gap=1.01e-16
+finite_inference:legacy/stage2_send/fin25e1_added/(2),True,
+six_outputs:legacy/stage2_send/fin25e1_added/(3),True,
+prediction_identity:legacy/stage2_send/fin25e1_added/(3),True,gap=1.01e-16
+finite_inference:legacy/stage2_send/fin25e1_added/(3),True,
+six_outputs:legacy/stage3_joint/original/(1),True,
+prediction_identity:legacy/stage3_joint/original/(1),True,gap=1.01e-16
+finite_inference:legacy/stage3_joint/original/(1),True,
+six_outputs:legacy/stage3_joint/original/(2),True,
+prediction_identity:legacy/stage3_joint/original/(2),True,gap=1.02e-16
+finite_inference:legacy/stage3_joint/original/(2),True,
+six_outputs:legacy/stage3_joint/original/(3),True,
+prediction_identity:legacy/stage3_joint/original/(3),True,gap=1.00e-16
+finite_inference:legacy/stage3_joint/original/(3),True,
+six_outputs:legacy/stage3_joint/same_sample/(1),True,
+prediction_identity:legacy/stage3_joint/same_sample/(1),True,gap=1.73e-18
+finite_inference:legacy/stage3_joint/same_sample/(1),True,
+six_outputs:legacy/stage3_joint/same_sample/(2),True,
+prediction_identity:legacy/stage3_joint/same_sample/(2),True,gap=1.01e-16
+finite_inference:legacy/stage3_joint/same_sample/(2),True,
+six_outputs:legacy/stage3_joint/same_sample/(3),True,
+prediction_identity:legacy/stage3_joint/same_sample/(3),True,gap=9.94e-17
+finite_inference:legacy/stage3_joint/same_sample/(3),True,
+six_outputs:legacy/stage3_joint/fin25e1_added/(1),True,
+prediction_identity:legacy/stage3_joint/fin25e1_added/(1),True,gap=9.99e-17
+finite_inference:legacy/stage3_joint/fin25e1_added/(1),True,
+six_outputs:legacy/stage3_joint/fin25e1_added/(2),True,
+prediction_identity:legacy/stage3_joint/fin25e1_added/(2),True,gap=6.51e-19
+finite_inference:legacy/stage3_joint/fin25e1_added/(2),True,
+six_outputs:legacy/stage3_joint/fin25e1_added/(3),True,
+prediction_identity:legacy/stage3_joint/fin25e1_added/(3),True,gap=1.02e-16
+finite_inference:legacy/stage3_joint/fin25e1_added/(3),True,
+six_outputs:exclude_100/stage1_contact/original/(2),True,
+prediction_identity:exclude_100/stage1_contact/original/(2),True,gap=1.01e-16
+finite_inference:exclude_100/stage1_contact/original/(2),True,
+six_outputs:exclude_100/stage1_contact/same_sample/(2),True,
+prediction_identity:exclude_100/stage1_contact/same_sample/(2),True,gap=1.04e-16
+finite_inference:exclude_100/stage1_contact/same_sample/(2),True,
+six_outputs:exclude_100/stage1_contact/fin25e1_added/(2),True,
+prediction_identity:exclude_100/stage1_contact/fin25e1_added/(2),True,gap=1.39e-16
+finite_inference:exclude_100/stage1_contact/fin25e1_added/(2),True,
+six_outputs:exclude_100/stage2_send/original/(2),True,
+prediction_identity:exclude_100/stage2_send/original/(2),True,gap=9.71e-17
+finite_inference:exclude_100/stage2_send/original/(2),True,
+six_outputs:exclude_100/stage2_send/same_sample/(2),True,
+prediction_identity:exclude_100/stage2_send/same_sample/(2),True,gap=3.47e-18
+finite_inference:exclude_100/stage2_send/same_sample/(2),True,
+six_outputs:exclude_100/stage2_send/fin25e1_added/(2),True,
+prediction_identity:exclude_100/stage2_send/fin25e1_added/(2),True,gap=9.37e-17
+finite_inference:exclude_100/stage2_send/fin25e1_added/(2),True,
+six_outputs:exclude_100/stage3_joint/original/(2),True,
+prediction_identity:exclude_100/stage3_joint/original/(2),True,gap=1.01e-16
+finite_inference:exclude_100/stage3_joint/original/(2),True,
+six_outputs:exclude_100/stage3_joint/same_sample/(2),True,
+prediction_identity:exclude_100/stage3_joint/same_sample/(2),True,gap=1.01e-16
+finite_inference:exclude_100/stage3_joint/same_sample/(2),True,
+six_outputs:exclude_100/stage3_joint/fin25e1_added/(2),True,
+prediction_identity:exclude_100/stage3_joint/fin25e1_added/(2),True,gap=1.01e-16
+finite_inference:exclude_100/stage3_joint/fin25e1_added/(2),True,
+same_core_common_sample,True,N=16251
+main_baseline:stage1_contact,True,max finite gap=0.00e+00
+main_baseline:stage2_send,True,max finite gap=0.00e+00
+main_baseline:stage3_joint,True,max finite gap=0.00e+00
+matched_rows:legacy/stage1_contact,True,
+saved_summary:legacy/stage1_contact/original/A,True,max finite gap=2.33e-13
+metadata_summary:legacy/stage1_contact/original/A,True,
+saved_coefficients:legacy/stage1_contact/original/A,True,max finite gap=1.44e-13
+metadata_coefficients:legacy/stage1_contact/original/A,True,
+saved_summary:legacy/stage1_contact/original/B,True,max finite gap=1.01e-13
+metadata_summary:legacy/stage1_contact/original/B,True,
+saved_coefficients:legacy/stage1_contact/original/B,True,max finite gap=8.46e-12
+metadata_coefficients:legacy/stage1_contact/original/B,True,
+saved_summary:legacy/stage1_contact/original/C,True,max finite gap=3.46e-14
+metadata_summary:legacy/stage1_contact/original/C,True,
+saved_coefficients:legacy/stage1_contact/original/C,True,max finite gap=8.74e-12
+metadata_coefficients:legacy/stage1_contact/original/C,True,
+saved_summary:legacy/stage1_contact/same_sample/A,True,max finite gap=1.71e-13
+metadata_summary:legacy/stage1_contact/same_sample/A,True,
+saved_coefficients:legacy/stage1_contact/same_sample/A,True,max finite gap=1.47e-13
+metadata_coefficients:legacy/stage1_contact/same_sample/A,True,
+saved_summary:legacy/stage1_contact/same_sample/B,True,max finite gap=2.38e-13
+metadata_summary:legacy/stage1_contact/same_sample/B,True,
+saved_coefficients:legacy/stage1_contact/same_sample/B,True,max finite gap=8.99e-12
+metadata_coefficients:legacy/stage1_contact/same_sample/B,True,
+saved_summary:legacy/stage1_contact/same_sample/C,True,max finite gap=5.15e-14
+metadata_summary:legacy/stage1_contact/same_sample/C,True,
+saved_coefficients:legacy/stage1_contact/same_sample/C,True,max finite gap=9.22e-12
+metadata_coefficients:legacy/stage1_contact/same_sample/C,True,
+saved_summary:legacy/stage1_contact/fin25e1_added/A,True,max finite gap=1.65e-13
+metadata_summary:legacy/stage1_contact/fin25e1_added/A,True,
+saved_coefficients:legacy/stage1_contact/fin25e1_added/A,True,max finite gap=1.04e-13
+metadata_coefficients:legacy/stage1_contact/fin25e1_added/A,True,
+saved_summary:legacy/stage1_contact/fin25e1_added/B,True,max finite gap=9.19e-14
+metadata_summary:legacy/stage1_contact/fin25e1_added/B,True,
+saved_coefficients:legacy/stage1_contact/fin25e1_added/B,True,max finite gap=9.15e-12
+metadata_coefficients:legacy/stage1_contact/fin25e1_added/B,True,
+saved_summary:legacy/stage1_contact/fin25e1_added/C,True,max finite gap=1.13e-13
+metadata_summary:legacy/stage1_contact/fin25e1_added/C,True,
+saved_coefficients:legacy/stage1_contact/fin25e1_added/C,True,max finite gap=9.01e-12
+metadata_coefficients:legacy/stage1_contact/fin25e1_added/C,True,
+matched_rows:legacy/stage2_send,True,
+saved_summary:legacy/stage2_send/original/A,True,max finite gap=8.95e-14
+metadata_summary:legacy/stage2_send/original/A,True,
+saved_coefficients:legacy/stage2_send/original/A,True,max finite gap=8.04e-14
+metadata_coefficients:legacy/stage2_send/original/A,True,
+saved_summary:legacy/stage2_send/original/B,True,max finite gap=6.36e-14
+metadata_summary:legacy/stage2_send/original/B,True,
+saved_coefficients:legacy/stage2_send/original/B,True,max finite gap=2.85e-13
+metadata_coefficients:legacy/stage2_send/original/B,True,
+saved_summary:legacy/stage2_send/original/C,True,max finite gap=5.35e-14
+metadata_summary:legacy/stage2_send/original/C,True,
+saved_coefficients:legacy/stage2_send/original/C,True,max finite gap=2.23e-13
+metadata_coefficients:legacy/stage2_send/original/C,True,
+saved_summary:legacy/stage2_send/same_sample/A,True,max finite gap=1.09e-13
+metadata_summary:legacy/stage2_send/same_sample/A,True,
+saved_coefficients:legacy/stage2_send/same_sample/A,True,max finite gap=6.11e-14
+metadata_coefficients:legacy/stage2_send/same_sample/A,True,
+saved_summary:legacy/stage2_send/same_sample/B,True,max finite gap=8.56e-14
+metadata_summary:legacy/stage2_send/same_sample/B,True,
+saved_coefficients:legacy/stage2_send/same_sample/B,True,max finite gap=2.32e-13
+metadata_coefficients:legacy/stage2_send/same_sample/B,True,
+saved_summary:legacy/stage2_send/same_sample/C,True,max finite gap=3.85e-14
+metadata_summary:legacy/stage2_send/same_sample/C,True,
+saved_coefficients:legacy/stage2_send/same_sample/C,True,max finite gap=2.67e-13
+metadata_coefficients:legacy/stage2_send/same_sample/C,True,
+saved_summary:legacy/stage2_send/fin25e1_added/A,True,max finite gap=9.10e-15
+metadata_summary:legacy/stage2_send/fin25e1_added/A,True,
+saved_coefficients:legacy/stage2_send/fin25e1_added/A,True,max finite gap=9.10e-15
+metadata_coefficients:legacy/stage2_send/fin25e1_added/A,True,
+saved_summary:legacy/stage2_send/fin25e1_added/B,True,max finite gap=7.99e-15
+metadata_summary:legacy/stage2_send/fin25e1_added/B,True,
+saved_coefficients:legacy/stage2_send/fin25e1_added/B,True,max finite gap=2.00e-13
+metadata_coefficients:legacy/stage2_send/fin25e1_added/B,True,
+saved_summary:legacy/stage2_send/fin25e1_added/C,True,max finite gap=4.13e-14
+metadata_summary:legacy/stage2_send/fin25e1_added/C,True,
+saved_coefficients:legacy/stage2_send/fin25e1_added/C,True,max finite gap=2.10e-13
+metadata_coefficients:legacy/stage2_send/fin25e1_added/C,True,
+matched_rows:legacy/stage3_joint,True,
+saved_summary:legacy/stage3_joint/original/A,True,max finite gap=3.67e-14
+metadata_summary:legacy/stage3_joint/original/A,True,
+saved_coefficients:legacy/stage3_joint/original/A,True,max finite gap=3.42e-14
+metadata_coefficients:legacy/stage3_joint/original/A,True,
+saved_summary:legacy/stage3_joint/original/B,True,max finite gap=1.88e-13
+metadata_summary:legacy/stage3_joint/original/B,True,
+saved_coefficients:legacy/stage3_joint/original/B,True,max finite gap=2.18e-12
+metadata_coefficients:legacy/stage3_joint/original/B,True,
+saved_summary:legacy/stage3_joint/original/C,True,max finite gap=1.16e-13
+metadata_summary:legacy/stage3_joint/original/C,True,
+saved_coefficients:legacy/stage3_joint/original/C,True,max finite gap=2.14e-12
+metadata_coefficients:legacy/stage3_joint/original/C,True,
+saved_summary:legacy/stage3_joint/same_sample/A,True,max finite gap=3.72e-14
+metadata_summary:legacy/stage3_joint/same_sample/A,True,
+saved_coefficients:legacy/stage3_joint/same_sample/A,True,max finite gap=3.38e-14
+metadata_coefficients:legacy/stage3_joint/same_sample/A,True,
+saved_summary:legacy/stage3_joint/same_sample/B,True,max finite gap=1.72e-13
+metadata_summary:legacy/stage3_joint/same_sample/B,True,
+saved_coefficients:legacy/stage3_joint/same_sample/B,True,max finite gap=1.84e-12
+metadata_coefficients:legacy/stage3_joint/same_sample/B,True,
+saved_summary:legacy/stage3_joint/same_sample/C,True,max finite gap=1.28e-13
+metadata_summary:legacy/stage3_joint/same_sample/C,True,
+saved_coefficients:legacy/stage3_joint/same_sample/C,True,max finite gap=1.88e-12
+metadata_coefficients:legacy/stage3_joint/same_sample/C,True,
+saved_summary:legacy/stage3_joint/fin25e1_added/A,True,max finite gap=5.73e-14
+metadata_summary:legacy/stage3_joint/fin25e1_added/A,True,
+saved_coefficients:legacy/stage3_joint/fin25e1_added/A,True,max finite gap=5.46e-14
+metadata_coefficients:legacy/stage3_joint/fin25e1_added/A,True,
+saved_summary:legacy/stage3_joint/fin25e1_added/B,True,max finite gap=1.54e-13
+metadata_summary:legacy/stage3_joint/fin25e1_added/B,True,
+saved_coefficients:legacy/stage3_joint/fin25e1_added/B,True,max finite gap=1.91e-12
+metadata_coefficients:legacy/stage3_joint/fin25e1_added/B,True,
+saved_summary:legacy/stage3_joint/fin25e1_added/C,True,max finite gap=6.66e-14
+metadata_summary:legacy/stage3_joint/fin25e1_added/C,True,
+saved_coefficients:legacy/stage3_joint/fin25e1_added/C,True,max finite gap=2.04e-12
+metadata_coefficients:legacy/stage3_joint/fin25e1_added/C,True,
+age100_excluded,True,
+age99_retained,True,
+matched_rows:exclude_100/stage1_contact,True,
+saved_summary:exclude_100/stage1_contact/original/B,True,max finite gap=1.87e-13
+metadata_summary:exclude_100/stage1_contact/original/B,True,
+saved_coefficients:exclude_100/stage1_contact/original/B,True,max finite gap=9.75e-12
+metadata_coefficients:exclude_100/stage1_contact/original/B,True,
+saved_summary:exclude_100/stage1_contact/same_sample/B,True,max finite gap=1.89e-13
+metadata_summary:exclude_100/stage1_contact/same_sample/B,True,
+saved_coefficients:exclude_100/stage1_contact/same_sample/B,True,max finite gap=1.03e-11
+metadata_coefficients:exclude_100/stage1_contact/same_sample/B,True,
+saved_summary:exclude_100/stage1_contact/fin25e1_added/B,True,max finite gap=5.24e-14
+metadata_summary:exclude_100/stage1_contact/fin25e1_added/B,True,
+saved_coefficients:exclude_100/stage1_contact/fin25e1_added/B,True,max finite gap=1.04e-11
+metadata_coefficients:exclude_100/stage1_contact/fin25e1_added/B,True,
+matched_rows:exclude_100/stage2_send,True,
+saved_summary:exclude_100/stage2_send/original/B,True,max finite gap=3.97e-14
+metadata_summary:exclude_100/stage2_send/original/B,True,
+saved_coefficients:exclude_100/stage2_send/original/B,True,max finite gap=2.00e-13
+metadata_coefficients:exclude_100/stage2_send/original/B,True,
+saved_summary:exclude_100/stage2_send/same_sample/B,True,max finite gap=2.66e-14
+metadata_summary:exclude_100/stage2_send/same_sample/B,True,
+saved_coefficients:exclude_100/stage2_send/same_sample/B,True,max finite gap=8.70e-14
+metadata_coefficients:exclude_100/stage2_send/same_sample/B,True,
+saved_summary:exclude_100/stage2_send/fin25e1_added/B,True,max finite gap=2.00e-14
+metadata_summary:exclude_100/stage2_send/fin25e1_added/B,True,
+saved_coefficients:exclude_100/stage2_send/fin25e1_added/B,True,max finite gap=1.58e-13
+metadata_coefficients:exclude_100/stage2_send/fin25e1_added/B,True,
+matched_rows:exclude_100/stage3_joint,True,
+saved_summary:exclude_100/stage3_joint/original/B,True,max finite gap=1.55e-13
+metadata_summary:exclude_100/stage3_joint/original/B,True,
+saved_coefficients:exclude_100/stage3_joint/original/B,True,max finite gap=1.21e-12
+metadata_coefficients:exclude_100/stage3_joint/original/B,True,
+saved_summary:exclude_100/stage3_joint/same_sample/B,True,max finite gap=5.73e-14
+metadata_summary:exclude_100/stage3_joint/same_sample/B,True,
+saved_coefficients:exclude_100/stage3_joint/same_sample/B,True,max finite gap=1.04e-12
+metadata_coefficients:exclude_100/stage3_joint/same_sample/B,True,
+saved_summary:exclude_100/stage3_joint/fin25e1_added/B,True,max finite gap=5.28e-14
+metadata_summary:exclude_100/stage3_joint/fin25e1_added/B,True,
+saved_coefficients:exclude_100/stage3_joint/fin25e1_added/B,True,max finite gap=1.04e-12
+metadata_coefficients:exclude_100/stage3_joint/fin25e1_added/B,True,
+saved_audit:sample_flow,True,max finite gap=1.11e-16
+saved_audit:sample_counts,True,max finite gap=0.00e+00
+saved_audit:answer_audit,True,max finite gap=1.82e-12
+saved_audit:age_audit,True,max finite gap=4.55e-13
+saved_audit:age_by_economy,True,max finite gap=0.00e+00
+saved_audit:comparison,True,max finite gap=1.13e-14
