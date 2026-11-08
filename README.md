@@ -19,42 +19,64 @@
 
 ## 运行建模流程
 
-在项目根目录运行，结果写到 `Output/`：
+在项目根目录运行，结果写到 `Output/`。四个入口按顺序执行：
 
 ```bash
-python run_pipeline.py    # 样本漏斗、三个 Stage、九个主回归
-python run_checks.py      # 估计器交叉验证
+python run_pipeline.py      # 样本漏斗、三个 Stage、九个主回归 -> Output/
+python run_checks.py        # 估计器交叉验证，只打印不写文件
+python run_analysis.py      # 按频率的描述统计、图 1、联合差异分解、图 2 -> Output/analysis/
+python run_robustness.py    # 六个频率系数的 wild cluster bootstrap -> Output/robustness/
+```
+
+`run_analysis.py` 和 `run_robustness.py` 依赖 `run_pipeline.py` 写出的 `Output/<stage>/`。
+单独跑其中一步用模块方式，例如：
+
+```bash
+python -m Analysis_Pipeline.joint_decomposition
 ```
 
 ## 目录结构
 
 ```text
 5507Seminar_Model/
-├── run_pipeline.py              入口：跑完整个分析
+├── run_pipeline.py              入口：样本与九个主回归
 ├── run_checks.py                入口：交叉验证估计器
-├── DataBase/                    原始数据，只读
+├── run_analysis.py              入口：描述统计、两张图、联合差异分解
+├── run_robustness.py            入口：稳健性检验
+├── DataBase/                    原始数据，只读，不上传
 │   ├── Data_Source.csv
 │   └── GlobalFindexDatabase2025.xlsx
 ├── DataClean_Pipeline/          第一步：构建样本
 │   ├── build_sample.py          四道门槛、变量编码、公共样本
 │   └── basic_check.py           早期的数据探查脚本
-├── Model_Pipeline/              第二步：估计并写出结果
+├── Model_Pipeline/              第二步：估计并写出主结果
 │   ├── stages.py                三个 Stage 的样本与结果变量，三个设定
 │   ├── lpm.py                   加权 LPM，国家固定效应，按经济体聚类（statsmodels）
 │   ├── results.py               每个 Stage 的预测概率、差值与检验
 │   └── report.py                写出 CSV 和 Markdown 报告
-├── Output/                      结果，可以随时重新生成
+├── Analysis_Pipeline/           第三步：主结果之外的分析
+│   ├── descriptives_by_frequency.py    按支付频率分组的描述统计、国家内差异
+│   ├── figure1_between_within.py       图 1：国家间 vs 国家内
+│   ├── joint_decomposition.py          联合差异分解（全量样本），delta method 与 WCB 区间
+│   └── figure2_predicted_probabilities.py  图 2：三个 Stage 的预测概率
+├── Robustness_Pipeline/         第四步：稳健性
+│   └── wild_cluster_bootstrap.py       六个频率系数的 WCR wild cluster bootstrap
+├── Output/                      结果，可用上面四个入口重新生成
 │   ├── sample_flow.csv
-│   ├── main_results.md          九个主回归与解读
-│   ├── stage_results_2026-09-27.pdf   当天结果的 PDF 快照，不随 run_pipeline.py 更新
+│   ├── main_results.md          九个主回归与解读，含 Y 的均值和 R²
+│   ├── main_results_table.md    论文用主结果表（9 列，系数、聚类标准误、星号、底部行），.csv 同内容
 │   ├── stage1_contact/          report.md、summary.csv、coefficients.csv
 │   ├── stage2_send/
-│   └── stage3_joint/
+│   ├── stage3_joint/
+│   ├── analysis/                run_analysis.py 的输出，见其中的 README.md
+│   ├── robustness/              run_robustness.py 的输出
+│   └── archive/                 按日期归档的快照（PDF、截图、9/30 组会、10/9 期中），见其中的 README.md
+├── Memo/                        交给教授的 Progress Memo，含个人信息，不上传
 ├── README.md
 └── requirements.txt
 ```
 
-数据流向：`DataBase` → `DataClean_Pipeline` → `Model_Pipeline` → `Output`。
+数据流向：`DataBase` → `DataClean_Pipeline` → `Model_Pipeline` → `Output`；`Analysis_Pipeline` 和 `Robustness_Pipeline` 复用前两步的样本和估计器，结果写到 `Output/analysis/` 和 `Output/robustness/`。
 
 ## 以后安装其他包
 
@@ -75,7 +97,9 @@ python -m pip install matplotlib
 | pandas | `import pandas as pd` | 表格数据处理 |
 | statsmodels | `import statsmodels.formula.api as smf` | 回归与聚类标准误 |
 | scikit-learn | `import sklearn` | 只在 `run_checks.py` 里核对系数 |
-| scipy | `from scipy import stats` | 只在 `run_checks.py` 里核对置信区间 |
+| scipy | `from scipy import stats` | t 分布分位数：`run_checks.py`、分解、bootstrap |
+| matplotlib | `import matplotlib.pyplot as plt` | `Analysis_Pipeline/` 的两张图和 bootstrap 的图 |
+| wildboottest | `from wildboottest.wildboottest import wildboottest` | 只在 `Robustness_Pipeline/` 里核对 bootstrap |
 | openpyxl | 通常由 pandas 自动调用 | 读取 `.xlsx` 文件 |
 
 如果遇到 `ModuleNotFoundError`，先确认 VS Code 选择的解释器与终端安装包使用的 Python 一致：
@@ -97,6 +121,6 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-不要复制或提交 `.venv`。`run_pipeline.py` 和 `run_checks.py` 按项目根目录定位数据，迁移后不用改路径；`basic_check.py` 用的是本机绝对路径，迁移后需要调整。
+不要复制或提交 `.venv`。四个入口脚本按项目根目录定位数据，迁移后不用改路径；`basic_check.py` 用的是本机绝对路径，迁移后需要调整。
 
 参考：[VS Code Python 环境](https://code.visualstudio.com/docs/python/environments)、[pip 用法](https://pip.pypa.io/en/latest/user_guide/#running-pip)。
