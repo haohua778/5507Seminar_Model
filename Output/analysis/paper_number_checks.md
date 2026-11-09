@@ -53,7 +53,7 @@ Written by `run_pipeline.py`. Each table lists a quantity the paper reports, the
 | Economies with no sender | 7 | 7 | 0 | yes |
 | Economies with no sender, names | Belize, Honduras, Madagascar, Morocco, Sri Lanka, Tunisia, Zimbabwe | Belize, Honduras, Madagascar, Morocco, Sri Lanka, Tunisia, Zimbabwe |  | yes |
 | Lesotho, respondents in the common sample | 171 | 171 | 0 | yes |
-| Lesotho, respondents in the Stage 2 sample | 28 | 52 | -24 | NO |
+| Lesotho, respondents in the Stage 2 sample | 28 | 28 | 0 | yes |
 
 ## Sections 3.5 and 4.2, decomposition checks (decomposition_checks.py)
 

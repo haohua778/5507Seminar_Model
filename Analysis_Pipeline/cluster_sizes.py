@@ -41,7 +41,7 @@ TARGETS = {
     "Economies with no sender, names":
         "Belize, Honduras, Madagascar, Morocco, Sri Lanka, Tunisia, Zimbabwe",
     "Lesotho, respondents in the common sample": 171,
-    "Lesotho, respondents in the Stage 2 sample": 52,
+    "Lesotho, respondents in the Stage 2 sample": 28,
 }
 
 
