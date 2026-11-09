@@ -5,9 +5,9 @@ senders (Stage 2 outcome = 1). From these:
 - smallest, largest and median Stage 1 cluster (respondents per economy)
 - share of all senders in the ten economies with the most senders
 - economies with no sender, and how many there are
-- Lesotho's counts in the common sample and in the Stage 2 sample. The
-  paper draft writes 52 for Stage 2 and an earlier draft wrote 28; the
-  comparison below settles which one the data give.
+- Lesotho's counts in the common sample and in the Stage 2 sample (all
+  171 respondents answer the income question with a missing value, see
+  DataClean_Pipeline/build_sample.py)
 
 Input:  common sample from DataClean_Pipeline.build_sample
 Output: Output/analysis/cluster_sizes.csv  (one row per economy)

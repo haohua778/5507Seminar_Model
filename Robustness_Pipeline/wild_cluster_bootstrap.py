@@ -10,6 +10,18 @@ Sample, outcome, regressors, weights and clusters are those of fit_lpm:
 weighted LPM (`wgt`), specification (2), one dummy per economy, standard
 errors clustered by economy.
 
+Why the bootstrap imposes the null hypothesis (restricted, WCR). The
+bootstrap samples must come from a world in which H0: b = 0 is true, so
+that the distribution of |t*| is the distribution of the test statistic
+under the null. Re-estimating without the tested regressor and resampling
+those residuals does this; resampling the unrestricted residuals (WCU)
+instead centres the bootstrap on the estimate, which with few clusters
+gives a test with worse size (Cameron, Gelbach and Miller 2008; MacKinnon
+and Webb 2017). Rademacher weights are the standard choice with 75
+clusters. The unrestricted version is used only in
+Analysis_Pipeline/joint_decomposition.py, where the object of interest is a
+confidence interval for a nonlinear function rather than a test of zero.
+
 The script also runs four checks and prints them:
 0. The matrix code below reproduces fit_lpm (statsmodels) and the saved
    Output/<stage>/coefficients.csv within 1e-8. Otherwise it stops.
@@ -17,8 +29,12 @@ The script also runs four checks and prints them:
 2. A second seed (12345) next to the main seed (20261026).
 3. The wildboottest package on the same sqrt(wgt)-transformed OLS model.
 
-Outputs: Output/robustness/wild_cluster_bootstrap_2026-10-26.{csv,md}
-         Output/robustness/wild_cluster_bootstrap_stage3_weekly_2026-10-26.png
+Input:  common sample from DataClean_Pipeline.build_sample and
+        Output/<stage>/coefficients.csv from run_pipeline.py (check 0)
+Output: Output/robustness/wild_cluster_bootstrap_2026-10-26.{csv,md}
+        Output/robustness/wild_cluster_bootstrap_stage3_weekly_2026-10-26.png
+        (bootstrap distribution for Stage 3 weekly, not in the paper)
+Paper:  Table 5, wild cluster bootstrap column
 
 Run from the project root, as part of run_robustness.py or alone:
     python -m Robustness_Pipeline.wild_cluster_bootstrap

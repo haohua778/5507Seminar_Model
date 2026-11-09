@@ -10,6 +10,13 @@ power of Stage 2). Each writes its CSV to Output/analysis/ and returns a
 comparison with the paper's values; the comparisons are printed and
 collected in Output/analysis/paper_number_checks.md.
 
+Input:  DataBase/Data_Source.csv
+Output: Output/sample_flow.csv (Table 1), Output/<stage>/ and
+        Output/main_results_table.{md,csv} (Table 3), Output/analysis/ CSV
+        files of the paper-number checks and paper_number_checks.md
+Paper:  Tables 1 and 3; text numbers of Sections 3.4, 3.5, 3.6 and 4.2;
+        Appendix A3
+
 Run from the project root:
     python run_pipeline.py
 """

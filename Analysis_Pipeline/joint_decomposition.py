@@ -17,6 +17,15 @@ sample, N = 16,251). Stage 2 is still estimated on contacted respondents; its
 prediction is extended to everyone. The midterm version averaged Q over the
 contacted subsample only; that value is reported for reference.
 
+Why the interaction is split in half. The identity above contains the term
+b1_g * b2_g, the part of the joint difference that exists only because both
+margins move at once. It belongs to neither margin alone. Giving half to
+each is the symmetric allocation (the Shapley value of a two-player
+product), and it is the allocation under which the two margins add up to
+the product difference exactly. The term is small (about 0.09 percentage
+points); Analysis_Pipeline/decomposition_checks.py reports the contact
+margin when the whole term is assigned to one side or the other.
+
 Inference. b1 and b2 come from different samples but the same 75 economies,
 so their covariance is estimated jointly: for each economy the cluster scores
 of the two regressions are stacked, and the CRV1 formula is applied to the
@@ -30,7 +39,10 @@ interval.
 Also reported: the direct Stage 3 estimate and the minimum detectable
 difference of Stage 2 (80% power, 5% two-sided).
 
-Outputs: Output/analysis/joint_decomposition.{csv,md}
+Input:  common sample from DataClean_Pipeline.build_sample
+Output: Output/analysis/joint_decomposition.{csv,md}
+Paper:  Table 4 (decomposition of the joint difference); the Stage 2
+        minimum detectable difference also appears in Appendix A3
 
 Run from the project root, as part of run_analysis.py or alone:
     python -m Analysis_Pipeline.joint_decomposition

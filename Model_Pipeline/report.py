@@ -9,6 +9,12 @@ Output/
         report.md
         summary.csv
         coefficients.csv
+
+Input:  the sample-flow table from DataClean_Pipeline.build_sample and the
+        summary and coefficient tables from Model_Pipeline.results
+Paper:  sample_flow.csv is Table 1; main_results_table.{md,csv} is Table 3;
+        main_results.md and the stage reports are the same nine regressions
+        with confidence intervals and raw rates, for reference
 """
 
 import pandas as pd

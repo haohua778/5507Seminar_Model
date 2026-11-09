@@ -6,6 +6,11 @@ For each of the nine main regressions:
    with the textbook formulas written out in numpy.
 3. Predicted probabilities must satisfy P_W - P_L = b_W and P_M - P_L = b_M.
 
+Input:  DataBase/Data_Source.csv
+Output: none; results are printed and the exit code is 0 only if every
+        check passes
+Paper:  verifies the estimator behind Table 3
+
 Run from the project root:
     python run_checks.py
 """

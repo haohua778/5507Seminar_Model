@@ -4,6 +4,7 @@ Steps:
 1. Wild cluster bootstrap p-values for the six frequency coefficients
 
 Requires Output/<stage>/coefficients.csv from run_pipeline.py.
+Paper: Table 5, wild cluster bootstrap column.
 
 Run from the project root:
     python run_robustness.py

@@ -7,6 +7,7 @@ Steps, in order (Figure 2 reads the outputs of Figure 1 and the decomposition):
 4. Figure 2: predicted probabilities by stage
 
 Requires Output/<stage>/summary.csv from run_pipeline.py.
+Paper: Table 2 (step 1), Figure 1 (step 2), Table 4 (step 3), Figure 2 (step 4).
 
 Run from the project root:
     python run_analysis.py

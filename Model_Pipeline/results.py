@@ -9,6 +9,11 @@ and, as columns next to N and economies,
 - mean_Y_less_than_monthly: the same mean among respondents in the reference
   group (fin25e3 = 3)
 - r_squared: R-squared of the WLS fit; it includes the country fixed effects
+
+Input:  an estimation sample from Model_Pipeline.stages
+Output: two DataFrames, written by Model_Pipeline.report to
+        Output/<stage>/summary.csv and coefficients.csv
+Paper:  Table 3 and Figure 2 (predicted probabilities)
 """
 
 import numpy as np

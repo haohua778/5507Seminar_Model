@@ -4,7 +4,16 @@ The sample narrows in three steps:
 1. Four gates give the base sample.
 2. Raw survey answers are recoded into model variables.
 3. Respondents with any missing control are dropped. The result is the
-   common sample. Every stage and every specification is estimated on it.
+   common sample (16,251 respondents, 75 economies). Every stage and every
+   specification is estimated on it or on a subset of it.
+
+Input:  DataBase/Data_Source.csv, the respondent-level Global Findex 2025
+        file (144,090 respondents, 140 economies), 17 columns
+Output: no file. build_common_sample() returns the common sample and the
+        sample-flow table; Model_Pipeline/report.py writes the latter to
+        Output/sample_flow.csv.
+Paper:  Table 1 (sample construction); variable definitions in Appendix A1
+        follow code_variables() below.
 """
 
 from pathlib import Path
@@ -36,8 +45,10 @@ REQUIRED_CONTROLS = [
     "internet_use", "smartphone", "account",
 ]
 
-# Age codes to treat as missing. Whether 99 and 100 are special codes is
-# still undecided, so nothing is dropped for now.
+# Age codes to treat as missing. The value 100 is probably a special code
+# (279 respondents in the full file, 6 in the common sample), but the
+# codebook does not say so, and the main results keep them. Appendix A2
+# re-estimates the models with [100] here.
 AGE_MISSING_CODES = []
 
 
@@ -87,8 +98,12 @@ def code_variables(base):
     out["internet_use"] = out["internet_use"].astype(float)
     out["account"] = out["account"].astype(float)
 
-    # Lesotho has no income data. Filling a constant keeps the country in the
-    # sample, and the country fixed effect absorbs the constant.
+    # Lesotho has no income data (inc_q is missing for every respondent).
+    # Dropping the missing values would remove the whole economy (171
+    # respondents). A constant keeps it in the sample: within Lesotho the
+    # income dummies are then collinear with the country fixed effect, so
+    # the constant is absorbed by the fixed effect and the income
+    # coefficients are identified from the other 74 economies only.
     out["inc_q_model"] = out["inc_q"]
     out.loc[out["economycode"] == "LSO", "inc_q_model"] = 1
     return out

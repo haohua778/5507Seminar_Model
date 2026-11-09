@@ -4,9 +4,27 @@
 
 - Country fixed effects enter as one dummy variable per economy.
 - `wgt` is a sampling weight, so coefficients are weighted least squares.
-- Standard errors are clustered by economy.
+- Standard errors are clustered by economy (CRV1).
 - Confidence intervals and p-values use the t distribution with
-  (number of economies - 1) degrees of freedom.
+  (number of economies - 1) = 74 degrees of freedom.
+
+Why CRV1 and t(G - 1). Respondents in the same economy share the sampling
+design, the survey vendor and the national scam environment, so their
+errors are correlated and the economy is the natural cluster. CRV1 is the
+cluster-robust sandwich with the finite-sample factor
+G/(G - 1) x (N - 1)/(N - K); with 75 clusters the asymptotic (G -> infinity)
+approximation is not reliable, so the factor is applied and inference uses
+the t distribution with G - 1 degrees of freedom rather than the normal.
+This is the convention of Stata's `regress ..., vce(cluster)` and of
+Cameron and Miller (2015). K counts the country dummies as parameters,
+which is what statsmodels does when the dummies are explicit regressors;
+absorbing them instead (as reghdfe does) would shrink the standard errors
+by less than 1 percent. Robustness_Pipeline/wild_cluster_bootstrap.py
+checks the resulting p-values against a wild cluster bootstrap.
+
+Input:  an estimation sample from Model_Pipeline.stages
+Output: a statsmodels results object; nothing is written
+Paper:  the estimator behind Tables 3 and 4, Figures 1 and 2
 """
 
 import numpy as np

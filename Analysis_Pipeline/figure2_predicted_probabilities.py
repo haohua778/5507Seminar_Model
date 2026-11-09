@@ -12,9 +12,12 @@ comes from the same t-test as the coefficients.
 
 The numbers are checked against Output/<stage>/summary.csv (specification (2)).
 
-Outputs: Output/analysis/figure2_predicted_probabilities.{png,pdf},
-         Output/analysis/figure2_predicted_probabilities.csv,
-         Figure 2 section appended to Output/analysis/figure_notes.md
+Input:  common sample from DataClean_Pipeline.build_sample,
+        Output/<stage>/summary.csv (check), Output/analysis/joint_decomposition.csv (MDD)
+Output: Output/analysis/figure2_predicted_probabilities.{png,pdf},
+        Output/analysis/figure2_predicted_probabilities.csv,
+        Figure 2 section appended to Output/analysis/figure_notes.md
+Paper:  Figure 2
 
 Run from the project root, as part of run_analysis.py or alone (after
 figure1_between_within.py and joint_decomposition.py, whose outputs it reads):

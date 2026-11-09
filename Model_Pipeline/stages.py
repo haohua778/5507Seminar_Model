@@ -3,6 +3,12 @@
 Each stage takes the common sample, keeps the respondents it needs, and adds
 its outcome as the column `outcome`. The three specifications add controls
 step by step and are the same for every stage.
+
+Input:  the common sample from DataClean_Pipeline.build_sample
+Output: no file; the stage functions return the estimation samples
+        (Stage 1: 16,251; Stage 2: 4,768; Stage 3: 16,249 respondents)
+Paper:  Table 3 (three stages x three specifications); the stage
+        definitions in Section 3
 """
 
 from dataclasses import dataclass
@@ -45,8 +51,13 @@ def stage2_send(common):
 def stage3_joint(common):
     """Stage 3: reported contact and sending money, as one joint event.
 
-    Contacted respondents who answered con22 with 8 or 9 are dropped,
-    because it is unknown whether they sent money.
+    Contacted respondents who answered con22 with 8 (don't know) or 9
+    (refused) are dropped, because it is unknown whether they sent money:
+    coding them as 0 would call them non-victims, coding them as 1 would
+    call them victims, and either choice invents an outcome. There are two
+    such respondents in the common sample, so Stage 3 has 16,249 instead
+    of 16,251. Respondents who were not contacted keep outcome 0 because
+    they could not have sent money to a scammer.
     """
     contacted = common["con21"] == 1
     answered = common["con22"].isin([1, 2])

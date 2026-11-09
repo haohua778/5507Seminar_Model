@@ -1,3 +1,16 @@
+"""Early exploration of the raw file (September 2026). Not part of the pipeline.
+
+Prints the value counts and missing values of the candidate control
+variables in the base sample, the respondents lost when controls are
+required, and the effect of filling Lesotho's missing income with a
+constant. The numbers it prints were used to decide the sample rules now
+in build_sample.py. It reads the raw file by an absolute path and is not
+called by any entry script.
+
+Input:  DataBase/Data_Source.csv
+Output: none; prints only
+"""
+
 import pandas as pd 
 df  = pd.read_csv('/Users/francis/Desktop/5507Seminar_Model/DataBase/Data_Source.csv')
 

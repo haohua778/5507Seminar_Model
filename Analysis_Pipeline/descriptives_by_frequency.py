@@ -13,7 +13,9 @@ Common sample, weights `wgt`. For each characteristic the table gives
 The Stage 2 rate is computed in the contacted sample (Stage 2 sample).
 A row at the top gives the weighted share of each frequency group.
 
-Outputs: Output/analysis/descriptives_by_frequency.{csv,md}
+Input:  common sample from DataClean_Pipeline.build_sample
+Output: Output/analysis/descriptives_by_frequency.{csv,md}
+Paper:  Table 2
 
 Run from the project root, as part of run_analysis.py or alone:
     python -m Analysis_Pipeline.descriptives_by_frequency

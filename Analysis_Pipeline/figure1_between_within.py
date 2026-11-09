@@ -8,8 +8,10 @@ Right panel: weekly - less than monthly difference in the Stage 3 outcome,
 (i) pooled with no country fixed effects and (ii) specification (2) with
 country fixed effects. Both weighted by `wgt`, clustered by economy, 95% CI.
 
-Outputs: Output/analysis/figure1_between_within.{png,pdf},
-         Output/analysis/figure1_economy_level.csv, Output/analysis/figure_notes.md
+Input:  common sample from DataClean_Pipeline.build_sample
+Output: Output/analysis/figure1_between_within.{png,pdf},
+        Output/analysis/figure1_economy_level.csv, Output/analysis/figure_notes.md
+Paper:  Figure 1
 
 Run from the project root, as part of run_analysis.py or alone:
     python -m Analysis_Pipeline.figure1_between_within
