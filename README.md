@@ -26,6 +26,7 @@ python run_pipeline.py      # 样本漏斗、三个 Stage、九个主回归 -> O
 python run_checks.py        # 估计器交叉验证，只打印不写文件
 python run_analysis.py      # 按频率的描述统计、图 1、联合差异分解、图 2 -> Output/analysis/
 python run_robustness.py    # 六个频率系数的 wild cluster bootstrap -> Output/robustness/
+python run_export_samples.py  # 共同样本和三个 Stage 样本写成 CSV -> Output/derived_samples/（不上传）
 ```
 
 `run_analysis.py` 和 `run_robustness.py` 依赖 `run_pipeline.py` 写出的 `Output/<stage>/`。
@@ -43,6 +44,7 @@ python -m Analysis_Pipeline.joint_decomposition
 ├── run_checks.py                入口：交叉验证估计器
 ├── run_analysis.py              入口：描述统计、两张图、联合差异分解
 ├── run_robustness.py            入口：稳健性检验
+├── run_export_samples.py        入口：导出派生样本，供提交文件夹使用
 ├── DataBase/                    原始数据，只读，不上传
 │   ├── Data_Source.csv
 │   └── GlobalFindexDatabase2025.xlsx

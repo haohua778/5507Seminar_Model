@@ -226,3 +226,6 @@ DataBase/*.xlsx
 
 # Memos carry names, emails and student IDs, so they stay out of the repository.
 Memo/
+
+# Derived samples are rows of the licensed microdata; they are shipped with the submission, not the repository.
+Output/derived_samples/
