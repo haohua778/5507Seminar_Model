@@ -28,7 +28,7 @@ W、M 是原项目的 weekly、monthly；少于每月为参照。Y 分别沿用�
 3. `fin25e1_added`：同一批人，额外加入 T。
 
 `same_sample` 和 `fin25e1_added` 的参与者必须完全相同。
-这使样本筛选变化与新增变量变化可以分别查看。系数变化仅作描述，不是跨模型差异检验。
+这使样本筛选变化与新增变量变化可以分别查看。原 `comparison.csv` 中的系数变化仅作描述；新增的跨模型差值检验见下文。
 con23 在本任务仅核查题目和分布；未增加其他组负责的 placebo 回归。
 
 ## 年龄处理
@@ -86,6 +86,15 @@ python run_payment_checks.py --data /absolute/path/Data_Source.csv --output /abs
 - `answer_audit.csv` / `age_audit.csv` / `age_by_economy.csv`：原始数据与分析样本的分布核对。
 - `manifest.json`：数据与源码 SHA-256、软件版本和模型定义。
 - `validation.csv`：运行 `run_payment_checks.py` 后生成的核对记录。
+- `model_shift.csv` / `model_shift.md`：后续增做的主设置 B 同样本模型间系数变化检验；与原结果报告分开保存。
+
+## 后续深入研究：模型间差值检验
+
+原对照表只把两个模型的系数相减，没有检验这个变化是否明显。新增入口
+`python run_payment_shift.py` 在同一批受访者上拟合主设置 B 的原方程和增加 fin25e1 的方程，
+按经济体把两次估计的误差配对，计算“增加前后每周差距变化”的标准误、95% 区间和 p 值。
+三个阶段分别计算；结果见 [model_shift.md](../../Output/payment_tools/model_shift.md)。
+这仍是观察数据中的关联变化，不说明 fin25e1 在因果上造成差距缩小。
 
 模型 CSV 中 estimate、se、ci_low、ci_high 是比例尺度；乘 100 才是报告的百分点。
 P 开头的 estimate 乘 100 后为百分比。comparison 中 `_pp` 后缀已经是百分点，不能再乘 100。
